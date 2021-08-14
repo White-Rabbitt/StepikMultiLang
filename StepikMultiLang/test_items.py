@@ -1,10 +1,9 @@
 import time
-from selenium.webdriver.common.by import By
 
-link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/"
-
-
-def test_guest_should_see_basket_button(browser):
+def test_button_add_to_basket_exist_on_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     browser.get(link)
-    basket_button = browser.find_elements_by_css_selector("button[type='submit'].btn-add-to-basket")
-    assert basket_button == "Добавить в корзину"
+    time.sleep(2)
+    button = browser.find_element_by_css_selector('.btn.btn-lg.btn-primary.btn-add-to-basket')
+    message = button.text
+    assert message == 'Ajouter au panier'
